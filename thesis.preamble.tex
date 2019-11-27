@@ -6,9 +6,15 @@
 \usepackage[toc]{appendix}
 \usepackage{titlesec}
 \usepackage[hidelinks]{hyperref}
+\usepackage{tabularx}
 
 \titleformat{\chapter}
   {\normalfont\bfseries\Huge}{\thechapter. }{0pt}{}
+
+% remove large spacing around chapter headings.
+% second argument - space before
+% last argument - space after
+\titlespacing*{\chapter}{0pt}{0pt}{0pt}
 
 \input{blocked.sty}
 \input{uhead.sty}

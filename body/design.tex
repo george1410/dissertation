@@ -1,3 +1,23 @@
-\chapter{Design}
+\chapter{System Design}
 
-Containing a comprehensive description of the design chosen, how it addresses the problem, and why it is designed the way it is.
+\section{Architectural Model}
+Architectural design decisions for this project have been heavily influenced by the requirement that the system should be federated, not relying on any individual provider. A number of possible architectural models were proposed as outlined below.
+
+\begin{enumerate}
+  \item \label{itm:web-cloud} A web based system, hosted on a cloud service provider such as Amazon Web Services (AWS), Google Cloud Platform (GCP) or Microsoft Azure.
+  \item \label{itm:on-demand-cloud} A locally installed application which spins up a compute instance on a cloud service provider on demand for each user for handling computationally expensive work.
+  \item \label{itm:local-service} A locally running web-based user interface which communicates with a separate locally running service process.
+  \item \label{itm:electron} An Electron application which encapsulates the frontend and backend service into a single executable that can be run locally.
+\end{enumerate}
+
+Each of the models listed above present their own advantages and disadvantages. Although \ref{itm:web-cloud} would mean that the software is accessible from anywhere, by any device with a web browser, it also means that users have no choice but to trust the backend of this software, running in the cloud, with their data, which means that the federated aspect of the system is lost.
+
+In \ref{itm:on-demand-cloud}, users would have more control over their data in the cloud, as they are responsible for managing the compute instance, however implementing this model would mean that users are required to have in-depth knowledge of AWS or similar, which detracts from the usability of the system.
+
+The model proposed in \ref{itm:local-service} does not rely on any remotely hosted software, and so maintains the integrity of the federated system. Furthermore, by keeping the service as a separate entity, it would be relatively simple to access it from other devices, for example a mobile phone on the same network as the host PC, using a consistent API. However, by requiring users to manually start the user interface, navigate to it in the browser, and then start the service, it increases the barrier to entry for less technical users.
+
+The Electron application proposed in \ref{itm:electron} will be easy for users to set up and run since it will consist of running a single executable, and it allows for web technologies to be used to build a desktop application. A disadvantage of using this model is that the application will only be available on desktop devices.
+
+It is clear that the final solution will require compromises, and that any architecture will have flaws. It was decided that the most important requirements that the system architecture should fulfill are ease of use, to ensure that the software is accessible to as many users as possible, and that the system should be entirely federated. Therefore, the most suitable architectural model, and the one to be used in this project is \ref{itm:electron}, despite the fact that this limits the platform to desktops only.
+
+\section{Languages and Tools}
