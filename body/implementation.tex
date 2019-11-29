@@ -1,3 +1,9 @@
 \chapter{Implementation}
 
-Containing a comprehensive description of the implementation of your software, including the language(s) and platform chosen, problems encountered, any changes made to the design as a result of the implementation, etc.
+% Containing a comprehensive description of the implementation of your software, including the language(s) and platform chosen, problems encountered, any changes made to the design as a result of the implementation, etc.
+
+\section{Languages and Tools}
+
+Some of the technical decisions regarding language choice are limited by virtue of the architectural decision to build the application using Electron. As a result the primary programming language for the project will be JavaScript. Being able to use JavaScript for both the frontend user interface and the backend service means less context-switching and a more rapid development process. To aid in fast development of a user interface, a Frontend JavaScript framework will be used. The three primary candidates for the framework choice were React, Vue and Angular. Since I have prior experience with React, and felt that the rate of work would benefit from not having to learn a new framework, React was chosen as the frontend framework for this project.
+
+Alongside JavaScript, Electron and React, there are a number of other tools being utilised to aid development. Babel and Webpack are being used to transpile and bundle JavaScript modules, respectively. 
