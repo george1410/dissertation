@@ -55,9 +55,58 @@ The main process houses the UI thread, and therefore it is imperative that it is
 \end{figure}
 
 \section{Email Sending and Receiving Prototype}
-\subsection{Sending}
+In order to gain an understanding of how best to handle email sending and receiving, a prototype application was built. This gave an opportunity to test different methods in an isolated place. In order to build the prototype as quickly as possible, it used a command line interface (CLI), rather than connecting to the React UI. After building these prototypes, very little work was required to integrate them into the main application, in the form of JavaScript Modules with simplified interfaces.
 
-\subsection{Receiving}
+\subsection{Sending Email}
+Emails are to be sent through the Simple Mail Transfer Protocol (SMTP) \cite{smtp-rfc} as this is the recognised standard for sending of email and is supported by all email providers. It was decided early in the implementation process that an existing library should be used to handle email sending, to avoid the complex and time-consuming task of implementing a client that uses the SMTP protocol from scratch. The SMTP client is responsible for establishing a two-way transmission channel with a SMTP server, and transferring mail messages that server.
+
+Research revealed two JavaScript libraries for creating SMTP clients. These are Nodemailer \cite{nodemailer} and smtp-client \cite{smtp-client}. The smtp-client library works at a relatively low-level, requiring each SMTP command to be manually invoked and sent to the server. It was decided that this low-level of control was not required for this project, and that the higher-level abstraction provided by Nodemailer would be more suitable. Using Nodemailer, sending a message could be done simply using the code as shown in Figure \ref{fig:smtp-code}.
+
+\begin{figure}[h!]
+  \centering
+    \begin{minted}[frame=single]{js}
+      const transporter = nodemailer.createTransport(accountInfo);
+
+      transporter.verify(error => {
+        if (error) {
+          console.log('There was a problem signing in.');
+        }
+      });
+
+      const info = await transporter.sendMail({
+        from: accountInfo.auth.user,
+        to: sendMessageAnswers.to,
+        subject: sendMessageAnswers.subject,
+        text: sendMessageAnswers.message
+      });
+    \end{minted}
+  \caption{Code for sending a message using Nodemailer}
+  \label{fig:smtp-code}
+\end{figure}
+
+The result of this prototype was a CLI that could be used to send an email message to an email address with a given subject and body. The application can be seen in Figure \ref{fig:smtp-cli}.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=\textwidth]{images/smtp-cli.png}
+  \caption{SMTP CLI Prototype Application}
+  \label{fig:smtp-cli}
+\end{figure}
+
+\subsection{Receiving Email}
+After the completion of the SMTP prototype, the prototype application was extended to also allow reading email messages from a remote mailbox. There are two protocols currently in use for accessing messages from mailboxes, IMAP \cite{imap-rfc} and POP3 \cite{pop-rfc}. A key difference between these two protocols is that when a client reads messages using POP3, it downloads the messages, stores them locally, and removes them from the server. With IMAP, the messages are stored permanently on the server (unless explicitly deleted). As a result, it was immediately obvious that IMAP should be used in this project due to the fact that if the software was installed on a different device, all of the users existing conversations should still be accessible.
+
+Preliminary research indicated two suitable libraries for IMAP access in JavaScript. The first of these is node-imap \cite{node-imap} which allows programmatic access to an IMAP server, but works at a relatively low-level, requiring knowledge and manual invocation of the commands used in the IMAP protocol. On the other hand, imap-simple \cite{imap-simple} is a wrapper around the node-imap library which provides a simpler interface. Due to the simplified interface, it was initially decided that imap-simple be used in this project to speed up development time. As development of the prototype progressed, it became apparent that, since imap-simple ``is missing a great deal of functionality from node-imap'' \cite{imap-simple}, it was not going to be possible to use it in this application. 
+Specifically, the problem with imap-simple was related to being able to use the onmail event listener that is invoked when new messages arrive in the mailbox. As a result, the prototype was re-written using node-imap directly, which while more complex, meant that the required functionality could be achieved.
+
+The prototype searched the mailbox for any messages with a specific subject, and display the body of these. It also displayed the body of any new messages received while the application was running, if they had the given subject line. The output from the prototype can be seen in Figure \ref{fig:imap-cli}.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=\textwidth]{images/imap-cli.png}
+  \caption{IMAP CLI Prototype Application}
+  \label{fig:imap-cli}
+\end{figure}
 
 \section{User Interface}
 \begin{figure}[h!]

@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+      \PYG{k+kr}{const} \PYG{n+nx}{transporter} \PYG{o}{=} \PYG{n+nx}{nodemailer}\PYG{p}{.}\PYG{n+nx}{createTransport}\PYG{p}{(}\PYG{n+nx}{accountInfo}\PYG{p}{);}
+
+      \PYG{n+nx}{transporter}\PYG{p}{.}\PYG{n+nx}{verify}\PYG{p}{(}\PYG{n+nx}{error} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n+nx}{error}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+          \PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}There was a problem signing in.\PYGZsq{}}\PYG{p}{);}
+        \PYG{p}{\PYGZcb{}}
+      \PYG{p}{\PYGZcb{});}
+
+      \PYG{k+kr}{const} \PYG{n+nx}{info} \PYG{o}{=} \PYG{n+nx}{await} \PYG{n+nx}{transporter}\PYG{p}{.}\PYG{n+nx}{sendMail}\PYG{p}{(\PYGZob{}}
+        \PYG{n+nx}{from}\PYG{o}{:} \PYG{n+nx}{accountInfo}\PYG{p}{.}\PYG{n+nx}{auth}\PYG{p}{.}\PYG{n+nx}{user}\PYG{p}{,}
+        \PYG{n+nx}{to}\PYG{o}{:} \PYG{n+nx}{sendMessageAnswers}\PYG{p}{.}\PYG{n+nx}{to}\PYG{p}{,}
+        \PYG{n+nx}{subject}\PYG{o}{:} \PYG{n+nx}{sendMessageAnswers}\PYG{p}{.}\PYG{n+nx}{subject}\PYG{p}{,}
+        \PYG{n+nx}{text}\PYG{o}{:} \PYG{n+nx}{sendMessageAnswers}\PYG{p}{.}\PYG{n+nx}{message}
+      \PYG{p}{\PYGZcb{});}
+\end{Verbatim}
