@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{report}
+\documentclass[a4paper,12pt,oneside]{report}
 \usepackage[left=2.5cm,right=2.5cm,top=2cm,bottom=3cm]{geometry}
 \include{thesis.preamble}
 
@@ -18,6 +18,8 @@
 
 
 \preface
+\clearpage
+\phantomsection
 \input{abstract/abstract}
 
 % There is a maximum limit of 15,000 words without exceeding 40 pages (A4 sides) for the main body of the dissertation that will be submitted in PDF. This limitation includes the bibliography and excludes cover/front pages (e.g., abstract, acknowledgement, table of contents) and excludes the appendices, listing of any codes or any other supporting documentation.
@@ -33,6 +35,8 @@
 
 \input{progress/progress}
 
+\clearpage
+\phantomsection
 \addcontentsline{toc}{chapter}{Bibliography}
 \bibliographystyle{acm}
 \bibliography{bibliography/bibliography}
