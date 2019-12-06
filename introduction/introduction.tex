@@ -14,21 +14,21 @@ Despite the growth of social media services, email is still relied upon as the b
 
 Aside from the fact that there are 3.9 billion email users in 2019 \cite{radicati2019}; representing over 50\% of the world's population, using email addresses as a means for communication has a number of advantages \cite{hanson2011}. Email is by design, the ultimate federated service, with email servers around the world working together. In addition, email inherently supports self-hosting, giving total control to users who require this - removing any reliance on third-party providers.
 
-Email clients have failed to keep pace with our reliance on email, and most have changed little since they were first invented \cite{rohall2004}. A problem with email in its current form is that it does not effectively handle group communication with explicit message threading in the same way that social media platforms do. The mismatch between the user interfaces for email clients and user needs for handling email has been extensively documented, and one recurrent theme in work to improve the experience is that messages should appear as conversations rather than existing independently \cite{venolia2003}.
+Email clients have failed to keep pace with our reliance on email, and most have changed little since they were first invented \cite{rohall2004}. A problem with email in its current form is that it does not effectively handle group communication with explicit message threading in the same way that social media platforms do. The mismatch between the user interfaces for email clients and users' needs for handling email has been extensively documented, and one recurrent theme in work to improve the experience is that messages should appear as explicit conversations rather than existing independently \cite{venolia2003}.
 
-Due to the underlying way in which emails are currently sent and received, simply changing the user interface is not enough in order to truly improve the user experience. Therefore, a system that combines the power of email as a federated transport mechanism with the usability of social media messaging appears to be a worthy of further investigation and implementation to solve some of the issues presented above. 
+Due to the underlying way in which emails are currently sent and received, simply changing the user interface is not enough in order to truly improve the user experience. Therefore, a system that combines the power of email as a federated transport mechanism with the usability of social media messaging appears to be worthy of further investigation and implementation with the aim of solving some of the issues presented above. 
 
-\section{Aims and Objectives}
+\section{Project Aim and Objectives}
 
-The aim of this project is to develop a system that enables small closed group communication, using email as the underlying transport mechanism.
+The aim of this project is to develop an application that enables small, closed-group communication, using email as the underlying transport mechanism for messages.
 
 The key objectives that have been identified as necessary in order to achieve this aim are:
 
 \begin{enumerate}
-  \item{Investigate and design a suitable data structure for storing message threads.}
-  \item{Investigate and implement a suitable architectural model for the system such that the federated aspect is preserved.}
-  \item{Design and build an intuitive user interface for the messaging system.}
-  \item{Implement the application logic for sending and receiving messages utilizing the data structure designed in (1).}
-  \item{Investigate and implement a suitable method of securing the system, to ensure that messages can only be read by the intended recipients.}
-  \item{Research and implement a method of allowing files, such as images, to be sent in message threads securely and efficiently.}
+  \item \label{itm:data-structure} Investigate and design a suitable data structure for storing and transmitting message threads.
+  \item Investigate and implement a suitable architectural model for the system such that the federated aspect is preserved.
+  \item Design and build an intuitive user interface for the messaging system.
+  \item Implement the application logic for sending and receiving messages utilizing the data structure designed in \ref{itm:data-structure}.
+  \item Investigate and implement a suitable method of securing the messages in transit, to ensure that messages can only be read by the intended recipients.
+  \item Investigate and implement a method of allowing files, such as images, to be sent in message threads securely and efficiently.
 \end{enumerate}
