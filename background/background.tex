@@ -2,8 +2,31 @@
 
 % Explaining what your project does that is new or is better than existing work in the same field.
 
-There exists a large number of commercial applications on the market today that allow small group messaging, with explicit threading built-in. Some examples, which are referred to throughout this report, include WhatsApp, Facebook Messenger, Slack, and Telegram. Many of these services provide a much richer feature-set than can be realised using email alone with current clients. However, a problem is that none of these applications provide the federated, decentralised model that is such a benefit of email, instead each relying on their own servers for transport and delivery, and requiring users to create new accounts for each service; giving over their personal data in the process.
+\section{Analysis of Existing Commercial Solutions}
 
-One example of an attempt to build an email client that solves some of the core problems with email, including ``lack of context'' due to inadequate message threading systems, is the ReMail project from IBM research \cite{kerr2004designing}. Whilst this project does attempt to improve the email reading experience, it leaves the way in which email is used fundamentally unchanged. Rather, the result of this is a client that fundamentally still works like, and has all the quirks of traditional email communication, as opposed to the traits of modern messaging applications that are increasingly becoming the preferred way for people to communicate, especially within groups.
+A large number of commercial solutions that facilitate small group messaging, with explicit threading built-in, already exist on the market. Many of these services provide a much richer feature-set than can be realised using email alone with current clients. However, a problem is that none of these applications provide the federated, decentralised model that is such a benefit of email, instead each relying on their own servers for transport and delivery. They also require users to create new accounts for each service; giving over their personal data in the process.
 
-Instead of simply creating a new client interface for reading email, this project aims to ignore the current way in which emails are constructed internally. Instead, it will simply use email as the ultimate federated network of users, since virtually everybody has an email account, to act as the transport mechanism for messages being sent using a newly designed schema that is optimised for group communication with explicit message threading.
+A selection of existing applications have been chosen to research their individual strengths and weaknesses, the results of which are shown in Table \ref{table:service-comparison}.
+
+\begin{table}[h]
+  \def\arraystretch{1.5}
+  \centering
+  \resizebox{\textwidth}{!}{
+    \begin{tabular}{rcccc}
+      \hline
+                                  & \textbf{WhatsApp} & \textbf{Facebook Messenger} & \textbf{Slack} & \textbf{Signal} \\ \hline
+      \textbf{E2E Encryption}     & Yes               & No by Default               & No             & Yes             \\ 
+      \textbf{Requires Account}   & Yes               & Yes                         & Yes            & Yes             \\ 
+      \textbf{Group Chats}        & Yes               & Yes                         & Yes            & Yes             \\ 
+      \textbf{Advertising}        & No                & Yes                         & No             & No              \\ \hline
+    \end{tabular}
+  }
+  \caption{Feature comparison of existing commercial messaging applications}
+  \label{table:service-comparison}
+\end{table}
+
+\section{Analysis of Previous Email Client Research}
+
+There has been some previous work to attempt to improve the email experience, however none of these attempts have utilised email to create an interface similar to that of the solutions outlined above. One example of an attempt to build an email client that solves some of the core problems with email, including ``lack of context'' due to inadequate message threading systems, is the ReMail project from IBM research \cite{kerr2004designing}. Whilst this project does attempt to improve the email reading experience, it leaves the way in which email is used fundamentally unchanged. Rather, the result of this is a client that fundamentally still works like, and has all the quirks of traditional email communication, as opposed to the traits of modern messaging applications that are increasingly becoming the preferred way for people to communicate, especially within groups.
+
+This project will take a different approach to improving on current email clients. Instead of simply creating a new client interface for reading email, this project aims to ignore the current way in which emails are constructed internally. Instead, it will simply use email as the ultimate federated network of users, since virtually everybody has an email account, to act as the transport mechanism for messages being sent using a newly designed schema that is optimised for group communication with explicit message threading.

@@ -1,0 +1,2 @@
+#!/bin/sh
+texcount introduction/introduction.tex background/background.tex body/body.tex summary/summary.tex -inc -total
