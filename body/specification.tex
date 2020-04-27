@@ -2,7 +2,7 @@
 
 %Explaining what your project is meant to achieve, how it is meant to function, perhaps even a functional specification.
 \section{Requirements Specification}
-The solution to the proposed problem is to build a desktop client application using JavaScript that incorporates the features of modern messaging clients that makes them so appealing, with email as the underlying transport mechanism due to its distributed and federated model. Below is an outline of the functional and non-functional requirements that will be used to guide the design and implementation of this system. The requirements as defined below will be used as the basis for validation in User Acceptance Testing as the project progresses.
+The solution to the proposed problem is to build a desktop client application using JavaScript that incorporates the features of modern messaging clients which makes them so appealing, with email as the underlying transport mechanism due to its distributed and federated model. Below is an outline of the functional and non-functional requirements that will be used to guide the design and implementation of this system. The requirements as defined below will be used as the basis for validation in User Acceptance Testing as the project progresses.
 
 \subsection{Functional Requirements}\label{sec:functional-requirements}
 \renewcommand{\labelenumii}{\theenumii}
@@ -26,22 +26,22 @@ The solution to the proposed problem is to build a desktop client application us
   \begin{enumerate}
     \item The application allows users to send text messages in a conversation.
     \item The application allows users to send messages containing unicode characters, including emoji.
-    \item The applicaiton allows users to send images and other file attachments.
-    \item The application shows a `sending' indicator until the message has actaully been sent.
+    \item The application allows users to send images and other file attachments.
+    \item The application shows a `sending' indicator until the message has actually been sent.
     \item The application allows users to `tag' other participants in messages.
   \end{enumerate}
 
   \item Receive Messages
   \begin{enumerate}
     \item The application presents an operating-system-level notification when a message is received if the application is not currently in focus.
-    \item The application highlights conversations with unread messages, removing this highlight once the conversation has beenopened.
+    \item The application highlights conversations with unread messages, removing this highlight once the conversation has been opened.
     \item The application retrieves any messages received while the app was not running when it is reopened.
   \end{enumerate}
   
   \item View Conversations
   \begin{enumerate}
     \item The application displays a list of all conversations that a user is part of.
-    \item The list of conversations is ordered by thetime that a message was last received within each conversation.
+    \item The list of conversations is ordered by the time that a message was last received within each conversation.
     \item The application displays messages for a specific conversation if it is selected by the user.
     \item The application allows users to read messages received in all conversations.
     \item The application displays messages within a conversation in the order in which they were sent.
@@ -53,7 +53,7 @@ The solution to the proposed problem is to build a desktop client application us
 
   \item Message Replies
   \begin{enumerate}
-    \item The application allows messages be replied to directly by the user.
+    \item The application allows messages to be replied to directly by the user.
     \item The application shows replies to a message as a thread attached to the message.
     \item The application only allows top-level messages to be replied to. Replies cannot have their own reply thread.
     \item The application does not mark a conversation as having unread messages if only replies are unread in the conversation.
@@ -66,10 +66,10 @@ The solution to the proposed problem is to build a desktop client application us
   \item The application is quick and simple to set up.
   \item Messages sent between participants are end-to-end encrypted using suitable cryptographic techniques.
   \item The application performs well, with minimal perceived loading times and fast responses to user interaction.
-  \item The user interface is attractive, and intuitive to navigate and use.
+  \item The user interface is attractive, consistent, and intuitive to navigate and use.
 \end{enumerate}
 
-\section{Development Methodology}
+\section{Development Methodology}\label{sec:development-methodology}
 
 This project will use an agile development methodology, to allow for flexibility and response to any unforeseen obstacles that may occur, in such a way as to minimise risk to the success of the project as a whole. In particular, the Kanban method of project management will be utilised, along with elements of the Extreme Programming (XP) methodology. In line with the Agile Manifesto, which states that working software is the primary measure of progress, continuous delivery of working software will begin as early as possible, with additional features being added to a minimum-viable-product incrementally.
 
@@ -77,4 +77,4 @@ In keeping with agile practices, there will be limited `Big Design Up Front' as 
 
 The benefit of the Kanban methodology in particular is that any card can be taken from the project backlog at any time and placed on the Kanban board, removing the rigidity that can be enforced by fixed-length sprints in other Agile frameworks such as Scrum. This is ideal for this project, as the future direction will likely be dictated by research undertaken as the project progresses.
 
-The XP concept of Test-Driven Development will be used throughout the project, as a means of ensuring that the code written meets requirements, and to ensure that any problems are found as early in the development cycle as possible, to minimise effort required in fixing them. Unit tests will be written alongside the code that they are designed to test, and a Continuous Integration (CI) pipeline will be used to ensure that all tests are passed before feature branches can be merged into master. This form of regression testing ensures that new feature code does not cause breaking changes for existing code.
+The XP concept of Test-Driven Development will be used throughout the project, as a means of ensuring that the code written meets requirements, and to ensure that any problems are found as early in the development cycle as possible, to minimise effort required in fixing them. Unit tests will be written alongside the code that they are designed to test, and a Continuous Integration (CI) pipeline will be used to ensure that all tests are passed before feature branches can be merged into the master branch. This form of regression testing ensures that new feature code does not cause breaking changes for existing code.

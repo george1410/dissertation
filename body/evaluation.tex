@@ -4,7 +4,7 @@
 
 % Not sure if this should be here or in a different section....
 \section{Continuous Integration}
-Throughout the project, Continuous Integration has been a vital element of the quality assurance process. Travis CI was chosen as the Continuous Integration service to be used for the project, and a CI pipeline was developed at the start of the development process to maintain code quality. The stages of this pipeline include running a linter, unit tests, and functional tests, and can be seen in Figure \ref{fig:ci-pipeline} The CI pipelie runs whenever a Pull Request (PR) is opened on the project's GitHub repository from a feature branch, and all stages of the pipeline must pass before the PR can be merged into the master branch.
+Throughout the project, Continuous Integration has been a vital element of the quality assurance process. Travis CI was chosen as the Continuous Integration service to be used for the project, and a CI pipeline was developed at the start of the development process to maintain code quality. The stages of this pipeline include running a linter, unit tests, and functional tests, and can be seen in Figure \ref{fig:ci-pipeline} The CI pipeline runs whenever a Pull Request (PR) is opened on the project's GitHub repository from a feature branch, and all stages of the pipeline must pass before the PR can be merged into the master branch.
 
 \begin{figure}[h!]
   \centering
@@ -14,7 +14,7 @@ Throughout the project, Continuous Integration has been a vital element of the q
 \end{figure}
 
 \section{Code Style}
-As part of the quality assurance process, it is important that code is written in a consistent style across all areas of the project. The code style for this project is based on the AirBnB JavaScript styleguide, with some modifications to matcht styles preferred by the Prettier code formatter, in addition to some custom linting rules specific to this project. The style rules are enforced by a ESLint, an open-source linter for JavaScript. The full ESLint configuration can be found in the \verb|.eslintrc.json| file in the source repository. By keeping consistent code style, maintenance of the project becoomes simplified, and code remains clear to read and understand.
+As part of the quality assurance process, it is important that code is written in a consistent style across all areas of the project. The code style for this project is based on the AirBnB JavaScript styleguide, with some modifications to match styles preferred by the Prettier code formatter, in addition to some custom linting rules specific to this project. The style rules are enforced by ESLint, an open-source linter for JavaScript. The full ESLint configuration can be found in the \verb|.eslintrc.json| file in the source repository. By keeping consistent code style, maintenance of the project becomes simplified, and code remains clear to read and understand. It should also be noted, that in the interests of readability and maintainability, the source code is documented inline with comments explaining the purpose of key sections of code.
 
 \section{Unit Testing}
 To ensure that the code meets functional requirements and operates as expected, unit tests were written alongside new code throughout the development process. By writing unit tests at the same time as the code, errors can be identified and resolved quickly. 
@@ -31,6 +31,7 @@ In total, around 200 unit tests were written for this project, focusing on the m
 \end{figure}
 
 \section{Functional Testing}
+In addition to the unit tests described previously, it was intended that this project would make use of automated Functional (End-to-End) tests in order to ensure that the functional requirements of the system are met, as outlined in Section \ref{sec:functional-requirements}. It was decided that Spectron, the de facto tool for automating functional tests for Electron applications would be used to aid in this. However, owing in part to the complexity of the application architecture and build pipeline, some problems were encountered whilst setting up this tooling that took some time to resolve. Not wanting these issues to negatively impact progress, development began alongside working on resolving the issues with Spectron. Whilst the problems were eventually resolved, with a simple test being written as a proof of concept, at this stage a considerable amount of implementation work had been completed, with functional testing being carried out manually. The decision was made that the complex work of writing a backlog of automated functional tests would likely put the project behind schedule. Therefore, functional testing continued to be carried out manually after each feature implementation, with the intention of adding functional tests if time became available. Unfortunately this was not the case, and the writing of automated functional tests is one piece of work that should be considered prior to further work being carried out on the project.
 
 
 \section{User Acceptance Testing}
@@ -41,10 +42,10 @@ In order to assess the quality of the software product, User Acceptance Testing 
   \item Second group of users test the software at a later stage, once feedback from the first stage has been acted on.
 \end{enumerate}
 
-The first stage of this plan was carried out as planned, and the outcomes discussed below, however the second stage of UAT could not be conducted due to the COVID-19 pandemic, which made carrying out observations of users infeasible. Had it taken place, the focus of this stage of UAT would have been to identify whether the issues that arose from the first stage had been sufficiently resolved, as well as testing of additional features. This change of plan really highlights the importance of the Agile development methodology, where testing was not just reserved for the end of the project, and so at least some testing had taken place prior to the pandemic.
+The first stage of this plan was carried out as intended, and the outcomes discussed below, however the second stage of UAT could not be conducted due to the COVID-19 pandemic, which made carrying out observations of users infeasible. Had it taken place, the focus of this stage of UAT would have been to identify whether the issues that arose from the first stage had been sufficiently resolved, as well as testing of additional features. This change of plan really highlights the importance of the Agile development methodology, where testing was not just reserved for the end of the project, and so at least some testing had taken place prior to the pandemic.
 
-\subsection{Stage 1}
-The key objectives of this stage of User Acceptance Testing was primarily to assess the extent to which some of the Non-Functional requirements had been met, which are more difficult to asssess through other forms of testing since they are somewhat subjective, but also to ensure that the software works as expected in a real-world environment, including on different operating systems, as users tested the application on their own devices, which included both Windows and MacOS.
+\subsection{Stage 1}\label{sec:stage1-uat}
+The key objectives of this stage of User Acceptance Testing was primarily to assess the extent to which some of the Non-Functional requirements had been met, which are more difficult to assess through other forms of testing since they are somewhat subjective, but also to ensure that the software works as expected in a real-world environment, including on different operating systems, as users tested the application on their own devices, which included both Windows and MacOS.
 
 % This process stuff should maybe be moved to an appendix...
 \subsubsection{Process}
@@ -88,9 +89,9 @@ The key objectives of this stage of User Acceptance Testing was primarily to ass
 \end{itemize}
 
 \subsubsection{Response to UAT}
-The results of this phase of user testing were extremely insightful in understanding both the areas where the application was succeeding as well as areas that required improvement. Following the iterative developement cycles provided by the Agile methodology, the feedback from user testing was used to feed back directly into the development priorities for the next iteration of work.
+The results of this phase of user testing were extremely insightful in understanding both the areas where the application was succeeding as well as areas that required improvement. Following the iterative development cycles provided by the Agile methodology, the feedback from user testing was used to feed back directly into the development priorities for the next iteration of work.
 
-It was decided that addressing users' concerns with existing functionality should take priority over the implementation of brand new features. This is in line with the philosophy that it is much easier and faster to fix issues with software as early as possible, and that making these changes at a later stage in the development process could lead to more work being required unnecessarily. Based on this, a list of feedback-based development priorites was created to direct further development work:
+It was decided that addressing users' concerns with existing functionality should take priority over the implementation of brand new features. This is in line with the philosophy that it is much easier and faster to fix issues with software as early as possible, and that making these changes at a later stage in the development process could lead to more work being required unnecessarily. Based on this, a list of feedback-based development priorities was created to direct further development work:
 
 \begin{itemize}
   \item Improve the login process so that common email providers can be used without the need for mail server settings.

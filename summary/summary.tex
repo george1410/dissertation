@@ -1,32 +1,43 @@
-\chapter{Summary \& Reflections}
+\chapter{Reflections \& Summary}
 
 
 % Including a discussion of results in a wider context (considering other work).
 
 
-\section{Project management}
+\section{Project Management}\label{sec:reflection-on-planning}
 
 % Covering the tasks as a part of your work plan and progress as well as how time and resources are managed.
-As outlined in the project plan, the project is being managed using the Kanban Agile methodology \cite{stellman2014learning}. Kanban has allowed for the flexibility of being able to take any card from the project backlog at any time, which has been ideal for this project as the research undertaken, and the lessons learnt from building prototypes has dictated changes to the direction of the work at various times. 
+As outlined in Section \ref{sec:development-methodology}, the project was managed using the Kanban Agile methodology \cite{stellman2014learning}. The Kanban methodology has allowed for the flexibility of being able to take any card from the project backlog at any time. This has been extremely useful, and has allowed for changes to be made to the project plan in response to challenges and changing plans following further research. Although an Agile way of working was adopted, the rough timeline for the key tasks in the project was established as part of the initial planning, and is shown in Figure \ref{fig:gantt}.
 
-An online Kanban board has been set up on Trello, with `Backlog', `On Hold', `In Progress', and `Done' columns. When new tasks are identified, they are added to the `Backlog' column. The `On Hold' column is for tasks that were previously `In Progress', but for which work cannot continue until some other, previously unidentified, task is completed. When the blocking task is complete, the `On Hold' task is returned to `In Progress'.
+\begin{figure}[h!]
+  \centering
+    \begin{tikzpicture}
+      \node[draw] {gantt chart goes here};
+    \end{tikzpicture}
+  \caption{Project Gantt Chart}
+  \label{fig:gantt}
+\end{figure}
+
+Despite best efforts to accurately estimate the amount of time that would be necessary to complete certain tasks, due to lack of experience, some of these were underestimated, which meant that due to time limitations, it was necessary to remove some features from the project scope to ensure that those features which are implemented are completed to a high quality. The Gantt chart served well identifying when tasks were overrunning and could potentially impact the timely delivery of the project as a whole. As the project began falling behind schedule, with tasks such as implementation of message receiving taking considerably longer than expected due to the complexitites of the node-imap library, it was decided that file sharing functionality should be excluded from the project scope. This decision was made so that an essential feature, end-to-end encryption, could be implemented fully and to a high standard, and this was completed on schedule.
+
+% talk about doing user testing earlier in response to being behind schedule & covid implications
 
 \begin{figure}[h!]
   \centering
   \includegraphics[width=\textwidth]{images/burnup.png}
-  \caption{Graph showing number of completed work items over time}
+  \caption{Burnup chart showing number of completed work items over time}
   \label{fig:burnup}
 \end{figure}
 
-Work over the course of the project so far has been consistent, with task completion being spread out over time, as illustrated in Figure \ref{fig:burnup}. The mean Cycle Time, i.e. the amount of time that a task spends either `In Progress' or `On Hold' \cite{roock2010kanban}, is currently 4.2 days, with 85\% of tasks having a cycle time of 8 days or fewer.
+Throughout the course of the project, progress was tracked using an online Kanban board on Trello. The benefit of this board is that it was possible to generate a burnup chart, seen in Figure \ref{fig:burnup}, showing the number of work items (cards) completed over time.
 
-Due to the fact that the project is currently on schedule, with no perceived setbacks in the near future, it is not deemed necessary to make any adjustments to the work plan at this time. Progress will be reviewed regularly so that changes to the schedule can be made if and when necessary.
+Work over the course of the project was relatively consistent, with some time taken for exam revision from December through January. The COVID-19 situation towards the end of the project presented some disruption and uncertainty, however this was primarily during the report writing stage and therefore did not significantly affect progress in terms of development. The mean Cycle Time, i.e. the amount of time that a task spends either `In Progress' or `On Hold' \cite{roock2010kanban}, was 5.0 days.
 
-\section{Contributions and reflections}
+\section{Contributions and Reflections}
 
 % Providing the details of your achievements and contributions including innovation, creativity and novelty (if there is any) as well as a personal reflection on the plan and your experience of the project (a critical appraisal of how the project went).
-The creation of a user interface, alongside the prototype for sending and receiving emails mean that significant progress has been made towards achieving the objectives of the project. It should be noted that the second semester contains fewer credits from other modules than the first, and therefore more time will be allocated per week to this project in the second semester. This is a factor that was considered when estimating time for tasks in the project plan. The project is progressing at a good pace, on track with the initial proposed timeline. This suggests that the amount of time-effort for each task has been estimated accurately, and therefore it is believed that the full scope of the project can be completed within the time constraints.
 
-I believe that the implementation work that has been completed so far is of a high quality, however there is room for improvement in the quality of documentation, and this will be a focus moving forward.
+Overall, I believe that this project has been a success, with high quality, well tested code, culminating in a software product that meets the vast majority of the initial requirements. Writing unit tests often took a considerable amount of time, and this was not factored into the time estimates for task completion, which did lead to changes to the project plan. The project presented a number of challenges, including developer a user interface that supports an excellent user experience as well as working with complex communication protocols such as IMAP. Designing and implementing effective solutions to these has stretched my abilities as a software engineer and enabled me to explore areas that I had not previously experienced.
 
 \section{Future Work}
+Despite the significant work that has taken place so far, there is some further work necessary before this software could become a commercially viable product, and there are additional features that could be added. The immediate focus for future work should be to implement the features that were removed from the project scope for various reasons. Following this, further improvements can be made. In addition, the software would benefit from improvements to the current testing coverage, to ensure that further developments are regression tested. Some of the key items of work to be completed in the future are; as was originally planned, allowing users to send attachments would help to increase adoption of this platform as a new messaging client. In addition; to improve the application's performance, message fetching should be paginated, so that only a subset of a conversation's messages are fetched to begin with (the most recent), and more messages are fetched as the user scrolls back.
