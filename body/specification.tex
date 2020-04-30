@@ -2,7 +2,7 @@
 
 %Explaining what your project is meant to achieve, how it is meant to function, perhaps even a functional specification.
 \section{Requirements Specification}
-The solution to the proposed problem is to build a desktop client application using JavaScript that incorporates the features of modern messaging clients which makes them so appealing, with email as the underlying transport mechanism due to its distributed and federated model. Below is an outline of the functional and non-functional requirements that will be used to guide the design and implementation of this system. The requirements as defined below will be used as the basis for validation in User Acceptance Testing as the project progresses.
+The proposed solution to the problem described is to build a client application that incorporates the features of modern messaging clients which makes them so appealing, whilst using email as the underlying transport mechanism to take advantage of its distributed and federated architecture. Below is an outline of the functional and non-functional requirements that will be used to guide the design and implementation of this system. The requirements as defined below will be used as the basis for validation through User Acceptance Testing as the project progresses.
 
 \subsection{Functional Requirements}\label{sec:functional-requirements}
 \renewcommand{\labelenumii}{\theenumii}
@@ -41,9 +41,10 @@ The solution to the proposed problem is to build a desktop client application us
   \item View Conversations
   \begin{enumerate}
     \item The application displays a list of all conversations that a user is part of.
-    \item The list of conversations is ordered by the time that a message was last received within each conversation.
+    \item The application lists conversations ordered by the time that a message was last received within each conversation.
     \item The application displays messages for a specific conversation if it is selected by the user.
     \item The application allows users to read messages received in all conversations.
+    \item The application allows users to view message attachments received in all conversations.
     \item The application displays messages within a conversation in the order in which they were sent.
     \item The application displays the name of the user that sent each message.
     \item The application displays the time that a message in the conversation was sent.
@@ -64,17 +65,17 @@ The solution to the proposed problem is to build a desktop client application us
 \begin{enumerate}
   \item The application is cross-platform; compatible with Windows, MacOS, and Linux operating systems.
   \item The application is quick and simple to set up.
-  \item Messages sent between participants are end-to-end encrypted using suitable cryptographic techniques.
-  \item The application performs well, with minimal perceived loading times and fast responses to user interaction.
-  \item The user interface is attractive, consistent, and intuitive to navigate and use.
+  \item The application ensures that messages sent between participants are end-to-end encrypted using suitable cryptographic techniques.
+  \item The application performs well, with minimal perceived loading times and is quick to responsd to user interaction.
+  \item The application has a user interface that is attractive, consistent, and intuitive to navigate and use.
 \end{enumerate}
 
 \section{Development Methodology}\label{sec:development-methodology}
 
-This project will use an agile development methodology, to allow for flexibility and response to any unforeseen obstacles that may occur, in such a way as to minimise risk to the success of the project as a whole. In particular, the Kanban method of project management will be utilised, along with elements of the Extreme Programming (XP) methodology. In line with the Agile Manifesto, which states that working software is the primary measure of progress, continuous delivery of working software will begin as early as possible, with additional features being added to a minimum-viable-product incrementally.
+This project will use an Agile development methodology, to allow for flexibility in response to any unforeseen obstacles that may occur, in such a way as to minimise risk to the success of the project as a whole. In particular, the Kanban method of project management will be utilised, along with elements of the Extreme Programming (XP) methodology. In line with the Agile Manifesto, which states that working software is the primary measure of progress, continuous delivery of working software will begin as early as possible, with additional features being added to a minimum-viable-product incrementally.
 
-In keeping with agile practices, there will be limited `Big Design Up Front' as would be the case with a Waterfall development model. Instead, incremental design will be favoured, since this allows for design decisions to reflect the problems encountered at different stages of development, that may not be foreseen up front without prototyping and research.
+This will be achieved through limited `Big Design Up Front' as would be the case with a Waterfall development model. Instead, incremental design will be favoured, since this allows for design decisions to reflect the problems encountered at different stages of development, that may not be foreseen up front without prototyping and research, thus allowing the project plan to adapt to changing circumstances.
 
-The benefit of the Kanban methodology in particular is that any card can be taken from the project backlog at any time and placed on the Kanban board, removing the rigidity that can be enforced by fixed-length sprints in other Agile frameworks such as Scrum. This is ideal for this project, as the future direction will likely be dictated by research undertaken as the project progresses.
+The benefit of the Kanban methodology in particular is that any card can be taken from the project backlog at any time and placed on the Kanban board, removing the rigidity that can be enforced by fixed-length sprints in other Agile frameworks such as Scrum. This is ideal for this project, as the future direction will likely be dictated by research undertaken as the project progresses, such as research into the use of email protocols.
 
-The XP concept of Test-Driven Development will be used throughout the project, as a means of ensuring that the code written meets requirements, and to ensure that any problems are found as early in the development cycle as possible, to minimise effort required in fixing them. Unit tests will be written alongside the code that they are designed to test, and a Continuous Integration (CI) pipeline will be used to ensure that all tests are passed before feature branches can be merged into the master branch. This form of regression testing ensures that new feature code does not cause breaking changes for existing code.
+The XP concept of Test-Driven Development will be used throughout the project, as a means of ensuring that the code written meets requirements, and to ensure that any problems are found as early in the development cycle as possible, to minimise effort required in fixing them. Unit tests will be written alongside the code that they are designed to test, and a Continuous Integration (CI) pipeline will be used to ensure that all tests are passed before feature branches can be merged into the master branch. This form of regression testing ensures that new feature code does not cause breaking changes for existing code which is vital in ensuring that the software is of the highest possible quality.
