@@ -11,9 +11,34 @@ As outlined in Section \ref{sec:development-methodology}, the project was manage
 
 \begin{figure}[h!]
   \centering
-    \begin{tikzpicture}
-      \node[draw] {gantt chart goes here};
-    \end{tikzpicture}
+  \ganttset{calendar week text= \small {\startday/\startmonth}}
+  \begin{ganttchart}[
+      hgrid,x unit=0.57mm,
+      hgrid style/.style={draw=black!5, line width=.75pt},
+      vgrid,
+      y unit chart=0.6cm,
+      time slot format=little-endian]{07-10-2019}{19-04-2020},
+      
+      \gantttitlecalendar{ month=shortname} \\
+      \ganttbar{Write Proposal}{07-10-2019}{13-10-2019} \\
+      \ganttbar{Architecture}{07-10-2019}{13-10-2019} \\
+      \ganttbar{UI Skeleton}{14-10-2019}{27-10-2019} \\
+      \ganttbar{Design Schema}{21-10-2019}{10-11-2019} \\
+      \ganttbar{Send/Receive Prototype}{28-10-2019}{10-11-2019} \\
+      \ganttbar{Design IPC API}{11-11-2019}{24-11-2019} \\
+      \ganttbar{Interim Report}{18-11-2019}{08-12-2019} \\
+      \ganttbar{Implement Schema}{02-12-2019}{22-12-2019} \\
+      \ganttbar{Research File Sharing}{23-12-2019}{29-12-2019} \\
+      \ganttbar{Exam Revision}{30-12-2019}{26-01-2020} \\
+      \ganttbar{Implement Sending}{27-01-2020}{09-02-2020} \\
+      \ganttbar{Implement Receiving}{10-02-2020}{23-02-2020} \\
+      \ganttbar{Research Security}{17-02-2020}{01-03-2020} \\
+      \ganttbar{Implement File Sharing}{24-02-2020}{08-03-2020} \\
+      \ganttbar{Implement Security}{02-03-2020}{22-03-2020} \\
+      \ganttbar{UAT}{23-03-2020}{29-03-2020} \\
+      \ganttbar{Write Dissertation}{23-03-2020}{19-04-2020} \\
+      \ganttbar{Demo Video}{06-04-2020}{12-04-2020}
+  \end{ganttchart}
   \caption{Project Gantt Chart}
   \label{fig:gantt}
 \end{figure}

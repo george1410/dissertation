@@ -8,7 +8,7 @@ Although carrying out a significant amount of up-front design has been avoided, 
 High-level architectural design decisions for this project have been heavily influenced by the requirement that the entire system should be federated, not relying on services from any individual provider. A number of possible architectural models were proposed as a result of research and these possibilities are outlined below.
 
 \begin{enumerate}
-  \item \label{itm:web-cloud} A web based system, hosted on a cloud service provider such as Amazon Web Services (AWS), Google Cloud Platform (GCP) or Microsoft Azure.
+  \item \label{itm:web-cloud} A web based system, hosted on a cloud service provider such as Amazon Web Services (AWS) \cite{aws}, Google Cloud Platform (GCP) \cite{gcp} or Microsoft Azure \cite{azure}.
   \item \label{itm:on-demand-cloud} A locally installed application which spins up a compute instance on a cloud service provider on demand for each user for handling computationally expensive work.
   \item \label{itm:local-service} A locally running web-based user interface which communicates via standard web protocols such as HTTP with a separate locally running service process.
   \item \label{itm:electron} An application which encapsulates the frontend user interface and backend service into a single executable that can be run locally.
@@ -20,7 +20,7 @@ In Model \ref{itm:on-demand-cloud}, users would have more control over their dat
 
 The solution proposed in Model \ref{itm:local-service} does not rely on any remotely hosted software, and so maintains the integrity of the federated system, ensuring that the user always has full control over their data. Furthermore, by keeping the service as a separate entity, it would be relatively simple to access it from other devices, for example a mobile phone on the same network as the host PC, using a consistent API. However, by requiring users to manually start the user interface, navigate to it in the browser, and then start the service, it increases the barrier to entry for less technical users.
 
-The architectural concept proposed in Model \ref{itm:electron} will be easy for users to set up and run since it will consist of running a single executable. The chosen method of implementation for this model is an Electron application, which allows for web technologies to be used to build a desktop application meaning that UI development will be fast compared to, for example; the intricacies of building attractive user interfaces in Java. A disadvantage of using this model is that the application will only be available on desktop devices.
+The architectural concept proposed in Model \ref{itm:electron} will be easy for users to set up and run since it will consist of running a single executable. The chosen method of implementation for this model is an Electron application, which allows for web technologies to be used to build a desktop application \cite{electron} meaning that UI development will be fast compared to, for example; the intricacies of building attractive user interfaces in Java. A disadvantage of using this model is that the application will only be available on desktop devices.
 
 It is clear that the final decision will need to be a compromise, and that any architecture will have flaws. It was decided that the most important requirements that the system architecture should fulfill are ease of use, to ensure that the software is accessible to as many users as possible, and that the system should be entirely federated. Therefore, the most suitable architectural model, and the one to be used in this project is Model \ref{itm:electron}, the Electron application. Despite the fact that this limits the platform to desktops only, it provides a good basis for build a proof-of-concept that presents the future of communication.
 
@@ -31,21 +31,16 @@ There is a considerable amount of previous work on how best to handle message th
 
 It is important to realise that, depending on the approach taken to message threading, one message can have multiple replies, each initiating a separate message thread. For this reason, message threads are best modeled using a tree structure \cite{palme1998message}. In email, there does not exist an explicit reference from a message to its replies, so the relationship can be described as unidirectional from reply to parent. Some email clients provide a feature to generate these reverse links, which are useful to allow a user to see if replies already exist before composing their own \cite{palme1998message}, though this functionality is by no means universal. Outside of email, there is a mix of bidirectional and unidirectional relationships between replies and their parents.
 
-In order to design the message threading model for this project, a review of several popular existing social messaging applications was conducted, highlighting the advantages and disadvantages of their threading models. The results of this research are summarised below.
+In order to design the message threading model for this project, a review of two popular existing social messaging applications with different threading models was conducted, highlighting the advantages and disadvantages of their threading models. The results of this research are summarised below.
 
 \begin{itemize}
-  \item Slack Model
+  \item Slack Model \cite{slack}
     \begin{itemize}
       \item A message provides links to its replies.
       \item Only one level of replies is allowed. Replies cannot be replied to.
       \item Replies can only be accessed via their parent message.
     \end{itemize}
-  \item Twitter Model
-    \begin{itemize}
-      \item Replies can be traced back to the parent from any level, and parent has links to all direct and indirect replies.
-      \item Replies can be replied to up to an infinite depth.
-    \end{itemize}
-  \item Facebook Messenger Model
+  \item Facebook Messenger Model \cite{fb-messenger}
     \begin{itemize}
       \item Replies can be traced back to the parent from any depth, but a parent message does not provide any links to its replies.
       \item Replies can be replied to up to an infinite depth.
@@ -62,7 +57,7 @@ It is proposed that this project will initially implement a threading structure 
 With the threading model decided, it is now necessary to design a message schema that supports it. In designing the schema for the messages to be sent via email in this application, there were a number of factors to be taken into consideration. These included minimising the amount of data that would need to be sent in each message, and ensuring that messages can be queried quickly and effectively to minimise search times for the user. The schema must be able to handle the threading model proposed in Section \ref{sec:message-threading-model}, and has been designed with all aspects of this in mind. Details on the implementation-specific details of these message schemas can be found in Section \ref{sec:message-schema-implementation}. The final solution uses the following message schemas:
 
 \subsubsection{Message}
-\begin{verbatim}
+\begin{Verbatim}[fontsize=\small]
 subject: EMAILSOCIALMESSAGING:{conversationId}
 body:    {
            messageId,
@@ -74,36 +69,36 @@ body:    {
            participants,
            conversationName
          }
-\end{verbatim}
+\end{Verbatim}
 
 \subsubsection{Public Key Request}
-\begin{verbatim}
+\begin{Verbatim}[fontsize=\small]
 subject: EMAILSOCIALMESSAGING-KEX
 body:    {
            conversationId,
            senderEmail,
            participants
          }
-\end{verbatim}
+\end{Verbatim}
 
 \subsubsection{Public Key Response}
-\begin{verbatim}
+\begin{Verbatim}[fontsize=\small]
 subject: EMAILSOCIALMESSAGING-KEY
 body:    {
            conversationId,
            senderEmail,
            key
          }
-\end{verbatim}
+\end{Verbatim}
 
 \subsubsection{Conversation Key Response}
-\begin{verbatim}
+\begin{Verbatim}[fontsize=\small]
 subject: EMAILSOCIALMESSAGING-CONKEY
 body:    {
            conversationId,
            encryptedKey
          }
-\end{verbatim}
+\end{Verbatim}
 
 \section{User Interface}\label{sec:ui-design}
 
